@@ -18,12 +18,16 @@ export const Card = React.memo(({
     <img src={card.imageUrl} alt={card.name} className="object-cover absolute inset-0" />
     <div
       className={cn(
-        "absolute inset-0 bg-black/50 flex items-end py-8 px-4 transition-opacity duration-300",
+        "absolute inset-0 bg-black/50 flex items-center py-8 px-4 transition-opacity duration-300",
         hovered === index ? "opacity-100" : "opacity-0"
       )}>
       <div
         className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
         {card.name}
+      </div>
+      <div
+        className="text-xl md:text-2xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
+        {card.description}
       </div>
     </div>
   </div>
