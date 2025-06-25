@@ -30,7 +30,7 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
     return Math.floor(Math.random() * 21) - 10;
   };
   return (
-    <div className="h-[640px] md:mx-auto max-w-sm md:py-20 font-sans antialiased md:max-w-5xl md:px-8 lg:px-12">
+    <div className="h-[640px] w-screen md:py-20 font-sans antialiased md:max-w-5xl md:px-8">
       <div className="h-[640px] w-screen relative grid grid-cols-1 md:grid-cols-2 md:py-5">
         <div className="mt-4 md:flex-row md:relative md:h-80 w-full">
           <AnimatePresence>
@@ -69,7 +69,7 @@ export const AnimatedTestimonials = ({ testimonials, autoplay = false }) => {
                   src={testimonial.src}
                   alt={testimonial.name}
                   draggable={false}
-                  className="h-50 w-60 md:h-full md:w-full rounded-3xl object-cover object-center"
+                  className="h-50 w-60 md:h-100 md:w-100 rounded-3xl object-cover object-center"
                 />
               </motion.div>
             ))}
