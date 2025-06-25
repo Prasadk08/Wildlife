@@ -26,8 +26,12 @@ export const Card = React.memo(({
         {card.name}
       </div>
       <div
-        className="text-xs md:text-xl font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
+        className="text-xs md:text-lg font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
         {card.description}
+      </div>
+      <div
+        className="text-xs md:text-lg font-medium bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200">
+        {card.facts}
       </div>
     </div>
   </div>
