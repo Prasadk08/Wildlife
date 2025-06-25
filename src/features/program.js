@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getPrograms = createAsyncThunk("program/getPrograms", async () => {
-  let res = await axios.get("https://wildlife-xdqb.onrender.com/getPrograms");
+  let res = await axios.get("https://wildlife-backend-oo00.onrender.com/getPrograms");
   return res.data;
 });
 
