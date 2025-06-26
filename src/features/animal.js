@@ -2,7 +2,8 @@ import { createAsyncThunk, createSlice  } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const getAnimals = createAsyncThunk('animal/getAnimals',async()=>{
-    let data = await axios.get("https://wildlife-backend-oo00.onrender.com/getAnimalCards");
+    // let data = await axios.get("https://wildlife-backend-oo00.onrender.com/getAnimalCards");
+    let data = await axios.get("http://localhost:8080/getAnimalCards");
     return data.data
 })
 
