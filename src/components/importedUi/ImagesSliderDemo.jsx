@@ -33,7 +33,7 @@ export function ImagesSliderDemo() {
         <motion.div className="font-bold backdrop-blur-sm text-xl md:text-6xl text-center w-screen text-white py-4">
           🌿 Welcome to WildGuard 🌿
           <br />
-          <div className="text-amber-50 text-[25px] text-center justify-center m-auto items-center w-2/3">
+          <div className="text-amber-50 text-base md:text-lg text-center justify-center m-auto items-center w-2/3">
             Guardians of Wildlife is an initiative by the Government to raise
             awareness and educate people about wildlife conservation.
           </div>
