@@ -11,7 +11,7 @@ const Programdt = () => {
   if (!selectedProgram) return <p>Program not found</p>;
 
   return (
-    <div className="grid grid-rows-1 max-w-1/2 m-auto bg-amber-100 border border-gray-300 rounded-2xl p-10 my-4 text-center">
+    <div className="grid grid-rows-1 w-95 m-4  md:max-w-2/3 m-auto bg-amber-100 border border-gray-300 rounded-2xl p-10 my-4 text-center">
     
       <img src={selectedProgram.imageUrl} alt={selectedProgram.pname} className="w-md h-auto mb-4 m-auto" />
       <h2 className="text-3xl font-bold mb-4">{selectedProgram.pname}</h2>
