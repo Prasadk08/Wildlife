@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getSearched } from "../features/animal";
+import { GrSearch } from "react-icons/gr";
+
 
 
 const Search = () => {
@@ -17,7 +19,9 @@ const handleChange = (e)=>{
 }
 
   return (
-    <div className="block w-2/5 m-auto">
+    <div className="block w-xs md:w-2/5 m-auto pb-4">
+    <GrSearch className="absolute h-5 w-5 mt-3 ml-3" />
+
         <input
           type="text"
           placeholder="mammals, birds, reptiles, etc."
