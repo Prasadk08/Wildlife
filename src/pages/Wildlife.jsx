@@ -36,3 +36,4 @@ const Wildlife = () => {
 };
 
 export default Wildlife;
+

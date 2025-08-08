@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -7,8 +8,6 @@ const JoinUs = () => {
     fullName: "",
     email: "",
     phone: "",
-    isIndianCitizen: false,
-    identityCard: "",
     message: "",
   });
 
@@ -17,27 +16,26 @@ const JoinUs = () => {
   );
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value} = e.target;
     setFormData({
       ...formData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     const updatedVolunteers = [...volunteers, formData];
     localStorage.setItem("volunteers", JSON.stringify(updatedVolunteers));
     setVolunteers(updatedVolunteers);
-    toast.success("Thank you for joining the initiative!");
-    setFormData({
-      fullName: "",
-      email: "",
-      phone: "",
-      isIndianCitizen: false,
-      identityCard: "",
-      message: "",
-    });
+    try{
+      let res = await axios.post("https://wildlife-backend-oo00.onrender.com/jointeam", formData);
+      toast.success(res.data.message);
+    }catch(err){
+      console.error("Error submitting form", err);
+      toast.error("Failed to submit the form. Please try again later.");
+      return;
+    }
   };
 
   return (
@@ -98,7 +96,7 @@ const JoinUs = () => {
                   placeholder="1234567890"
                 />
               </div>
-              <div className="flex items-center mt-8 space-x-2">
+              {/* <div className="flex items-center mt-8 space-x-2">
                 <input
                   type="checkbox"
                   name="isIndianCitizen"
@@ -107,23 +105,7 @@ const JoinUs = () => {
                   className="h-5 w-5 text-green-600"
                 />
                 <label className="text-gray-700 px-2">I am a citizen of India</label>
-              </div>
-              {formData.isIndianCitizen && (
-                <div className="md:col-span-2">
-                  <label className="block text-gray-700 font-semibold mb-1">
-                    Aadhaar or Identity Card Number
-                  </label>
-                  <input
-                    type="text"
-                    name="identityCard"
-                    value={formData.identityCard}
-                    onChange={handleChange}
-                    required
-                    className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                    placeholder="XXXX-XXXX-XXXX"
-                  />
-                </div>
-              )}
+              </div> */}
             </div>
 
             <div>

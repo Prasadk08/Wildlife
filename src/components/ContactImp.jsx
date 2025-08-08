@@ -1,10 +1,23 @@
+import axios from "axios";
 import React from "react";
 import { toast } from "react-toastify";
 
 const ContactImp = () => {
-  const handlesubmit = (e)=>{
+  const [formData, setFormData] = React.useState({
+    name: "",
+    email: "",
+    message: ""
+  });
+  const handlesubmit = async(e)=>{
     e.preventDefault();
-    toast.success("Form submitted successfully!");
+    try{
+      let res = await axios.post("https://wildlife-backend-oo00.onrender.com/contactus", formData)
+      toast.success(res.data.message);
+    }catch(err){
+      console.error("Error submitting form", err);
+      toast.error("Failed to submit the form. Please try again later.");
+      return;
+    }
   }
   return (
     <div className="lg:max-w-7xl h-full py-10 m-auto grid grid-cols-1 md:grid-cols-2 gap-10 my-2 px-10 z-21">
@@ -13,25 +26,18 @@ const ContactImp = () => {
           <h2 className="text-center text-2xl font-bold py-2">
             Contact Us Form
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4">
             <div>
               <label className="block text-gray-700 font-semibold mb-1">
-                Enter First Name
+                Enter your Name
               </label>
               <input
                 type="text"
                 className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                placeholder="Enter your First Name" required
-              />
-            </div>
-            <div>
-              <label className="block text-gray-700 font-semibold mb-1">
-                Enter Last Name
-              </label>
-              <input
-                type="text"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2"
-                placeholder="Enter your Last Name" required
+                name="name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                placeholder="Enter your Name" required
               />
             </div>
           </div>
@@ -42,6 +48,9 @@ const ContactImp = () => {
             <input
               type="email"
               className="w-full border border-gray-300 rounded-lg px-4 py-2"
+              name="email"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               placeholder="Enter your Email" required
             />
           </div>
@@ -52,6 +61,9 @@ const ContactImp = () => {
             <textarea
               type="text"
               className="w-full border border-gray-300 rounded-lg px-4 py-2"
+              name="message"
+              value={formData.message}
+              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
               placeholder="Enter your Message" required
             />
           </div>

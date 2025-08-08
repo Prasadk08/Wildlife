@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const getPrograms = createAsyncThunk("program/getPrograms", async () => {
-  let res = await axios.get("https://wildlife-backend-oo00.onrender.com/getPrograms");
+  let res = await axios.get("https://wildlife-backend-oo00.onrender.com/programs");
   return res.data;
 });
 
@@ -13,7 +13,12 @@ const programSlice = new createSlice({
     loading: false,
     error: false,
   },
-  reducers: {},
+  reducers: {
+    searchData:(state,action)=>{
+      state.programs=[]
+      state.programs.push(action.payload);
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getPrograms.pending, (state) => {
@@ -28,5 +33,7 @@ const programSlice = new createSlice({
       });
   },
 });
+
+export const { searchData } = programSlice.actions;
 
 export default programSlice.reducer;
