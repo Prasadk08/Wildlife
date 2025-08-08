@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 
 const JoinUs = () => {
   const [formData, setFormData] = useState({
-    fullName: "",
+    name: "",
     email: "",
     phone: "",
     message: "",
@@ -30,6 +30,7 @@ const JoinUs = () => {
     setVolunteers(updatedVolunteers);
     try{
       let res = await axios.post("https://wildlife-backend-oo00.onrender.com/jointeam", formData);
+      // let res = await axios.post("http://localhost:8080/jointeam", formData);
       toast.success(res.data.message);
     }catch(err){
       console.error("Error submitting form", err);
@@ -64,8 +65,8 @@ const JoinUs = () => {
                 <label className="block text-gray-700 font-semibold mb-1">Full Name</label>
                 <input
                   type="text"
-                  name="fullName"
-                  value={formData.fullName}
+                  name="name"
+                  value={formData.name}
                   onChange={handleChange}
                   required
                   className="w-full border border-gray-300 rounded-lg px-4 py-2"
